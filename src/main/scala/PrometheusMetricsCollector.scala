@@ -4,7 +4,7 @@ import io.prometheus.client.Collector
 import io.prometheus.client.Collector.MetricFamilySamples.Sample
 import io.prometheus.client.Collector._
 
-import scala.collection.convert.ImplicitConversions._
+import scala.collection.JavaConversions._
 
 
 class PrometheusMetricsCollector(registry: MetricsView = MetricsStatsReceiver.defaultRegistry) extends Collector {
