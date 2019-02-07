@@ -1,14 +1,14 @@
 package kovszilard.twitter.server.prometheus
 
 import com.twitter.app.App
-import com.twitter.finagle.stats.FinagleMetricsCollector
+import com.twitter.finagle.stats.PrometheusMetricsCollector
 import com.twitter.server.Admin.Grouping
 import com.twitter.server.AdminHttpServer.Route
 import com.twitter.server.{Admin, AdminHttpServer, Stats}
 
 trait PrometheusExporter extends Admin { self: App with AdminHttpServer with Stats =>
 
-  FinagleMetricsCollector().register()
+  PrometheusMetricsCollector().register()
 
   override protected def routes: Seq[Route] = {
     super.routes ++ Seq(Route.isolate(Route(

@@ -7,7 +7,7 @@ import io.prometheus.client.Collector._
 import scala.collection.convert.ImplicitConversions._
 
 
-class FinagleMetricsCollector(registry: MetricsView = MetricsStatsReceiver.defaultRegistry) extends Collector {
+class PrometheusMetricsCollector(registry: MetricsView = MetricsStatsReceiver.defaultRegistry) extends Collector {
 
   override def collect(): java.util.List[MetricFamilySamples] = {
     val gauges = registry.gauges.map{ case (name: String, value: Number) => fromGauge(name, value)}
@@ -65,7 +65,7 @@ class FinagleMetricsCollector(registry: MetricsView = MetricsStatsReceiver.defau
 
 }
 
-object FinagleMetricsCollector {
-  def apply() = new FinagleMetricsCollector()
-  def apply(registry: Metrics) = new FinagleMetricsCollector(registry)
+object PrometheusMetricsCollector {
+  def apply() = new PrometheusMetricsCollector()
+  def apply(registry: Metrics) = new PrometheusMetricsCollector(registry)
 }
