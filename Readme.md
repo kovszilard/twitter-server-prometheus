@@ -18,10 +18,18 @@ import sbt._
 
 object MyBuild extends Build {
 
-  lazy val yourProject = Project("yourProject", file("."))
+  lazy val myProject = Project("myProject", file("."))
                     .dependsOn(twitter-server-prometheus)
 
   lazy val twitter-server-prometheus = RootProject(uri("git://github.com/kovszilard/twitter-server-prometheus.git#0.1"))
 
+}
+```
+
+Once you have the SBT dependency, you can mix in the `PrometheusExporter` trait to your App.
+
+```
+object MyApp extends TwitterServer with PrometheusExporter {
+  ...
 }
 ```
