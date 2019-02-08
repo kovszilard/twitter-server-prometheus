@@ -1,4 +1,4 @@
-package kovszilard.twitter.server.prometheus
+package com.github.kovszilard.twitter.server.prometheus
 
 import com.twitter.app.App
 import com.twitter.finagle.stats.PrometheusMetricsCollector

@@ -1,6 +1,6 @@
 # Twitter Server Prometheus Exporter
 
-This project is a simple metrics exporter from twitter server to prometheus.
+This project is a simple metrics exporter from twitter server to prometheus based on the blog post and code from [Footballradar](https://engineering.footballradar.com/prometheus-at-football-radar/)
 
 ## Features
 

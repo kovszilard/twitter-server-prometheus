@@ -16,4 +16,3 @@ libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
 
 libraryDependencies += "io.prometheus" % "simpleclient" % "0.6.0"
 libraryDependencies += "io.prometheus" % "simpleclient_common" % "0.6.0"
-
