@@ -2,7 +2,7 @@ name := "twitter-server-prometheus"
 
 version := "0.1"
 
-scalaVersion := "2.12.8"
+scalaVersion := "2.11.12"
 
 crossScalaVersions := Seq("2.12.8", "2.11.12")
 
