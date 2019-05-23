@@ -11,19 +11,10 @@ This project is a simple metrics exporter from twitter server to prometheus base
 
 ## Usage
 
-SBT can depend on sources from git repositories, see the example below.
+Include it in your project by adding the following to your build.sbt:
 
-``` sbt
-import sbt._
-
-object MyBuild extends Build {
-
-  lazy val myProject = Project("myProject", file("."))
-                    .dependsOn(twitter-server-prometheus)
-
-  lazy val twitter-server-prometheus = RootProject(uri("git://github.com/kovszilard/twitter-server-prometheus.git#0.1"))
-
-}
+```
+libraryDependencies += "com.github.kovszilard" %% "twitter-server-prometheus" % "19.1.0"
 ```
 
 Once you have the SBT dependency, you can mix in the `PrometheusExporter` trait to your App.

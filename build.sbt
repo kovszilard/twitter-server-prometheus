@@ -2,11 +2,18 @@ import Dependencies._
 
 ThisBuild / scalaVersion     := "2.12.8"
 ThisBuild / version          := twitterVersion
-ThisBuild / organization     := "com.github"
+ThisBuild / organization     := "com.github.kovszilard"
 ThisBuild / organizationName := "kovszilard"
+
+useGpg := true
+useGpgAgent := true
+useGpgPinentry := true
 
 lazy val root = (project in file("."))
   .aggregate(twitterServerPrometheus, example)
+  .settings(
+    skip in publish := true
+  )
 
 lazy val twitterServerPrometheus = (project in file("twitter-server-prometheus"))
     .settings(
@@ -27,5 +34,6 @@ lazy val example = (project in file("example"))
         libraryDependencies ++= Seq(
             twitterServerLogback,
             logback
-        )
+        ),
+        skip in publish := true
     ).dependsOn(twitterServerPrometheus)
