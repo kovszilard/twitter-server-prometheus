@@ -1,18 +1,20 @@
-name := "twitter-server-prometheus"
+import Dependencies._
 
-version := "0.1"
+ThisBuild / scalaVersion     := "2.12.8"
+ThisBuild / version          := twitterVersion
+ThisBuild / organization     := "com.github"
+ThisBuild / organizationName := "kovszilard"
 
-scalaVersion := "2.12.8"
-
-crossScalaVersions := Seq("2.12.8", "2.11.12")
-
-val twitterVersion = "19.1.0"
-
-libraryDependencies += "com.twitter" %% "twitter-server" % twitterVersion
-libraryDependencies += "com.twitter" %% "finagle-stats" % twitterVersion
-
-libraryDependencies += "com.twitter" %% "twitter-server-logback-classic" % twitterVersion
-libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
-
-libraryDependencies += "io.prometheus" % "simpleclient" % "0.6.0"
-libraryDependencies += "io.prometheus" % "simpleclient_common" % "0.6.0"
+lazy val twitterServerPrometheus = (project in file("."))
+  .settings(
+    name := "twitter-server-prometheus",
+    crossScalaVersions := Seq("2.12.8", "2.11.12"),
+    libraryDependencies ++= Seq(
+        twitterServer,
+        finagleStats,
+        twitterServerLogback,
+        logback,
+        prometheusSimpleClient,
+        prometheusSimpleClientCommon
+        )
+  )
