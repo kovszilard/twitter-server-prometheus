@@ -1,6 +1,8 @@
 # Prometheus metrics for Twitter Server
 [![Build Status](https://travis-ci.org/kovszilard/twitter-server-prometheus.svg?branch=master)](https://travis-ci.org/kovszilard/twitter-server-prometheus)
 [![Maven central](https://img.shields.io/maven-central/v/com.github.kovszilard/twitter-server-prometheus_2.12)](https://search.maven.org/search?q=twitter-server-prometheus)
+[![Tweet](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fkovszilard%2Fsmenu)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fkovszilard%2Fsmenu)
+[![Twitter follow](https://img.shields.io/twitter/follow/kovszilard?style=social)](https://twitter.com/intent/follow?screen_name=kovszilard)
 
 This project is a simple metrics exporter from twitter server to prometheus based on the blog post and code from [Footballradar](https://engineering.footballradar.com/prometheus-at-football-radar/)
 
