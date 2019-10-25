@@ -4,19 +4,20 @@ import com.twitter.app.App
 import com.twitter.finagle.stats.PrometheusMetricsCollector
 import com.twitter.server.Admin.Grouping
 import com.twitter.server.AdminHttpServer.Route
-import com.twitter.server.{Admin, AdminHttpServer, Stats}
+import com.twitter.server.{AdminHttpServer, Stats}
 
-trait PrometheusExporter extends Admin { self: App with AdminHttpServer with Stats =>
+trait PrometheusExporter { self: App with AdminHttpServer with Stats =>
 
   PrometheusMetricsCollector().register()
 
-  override protected def routes: Seq[Route] = {
-    super.routes ++ Seq(Route.isolate(Route(
+  val metricsRoute: Route = Route.isolate(Route(
       path = "/metrics",
       handler = new PrometheusMetricsExporterService(),
       alias = "Prometheus Metrics",
       group = Some(Grouping.Metrics),
       includeInIndex = true
-    )))
-  }
+    )
+  )
+
+  addAdminRoute(metricsRoute)
 }

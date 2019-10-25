@@ -1,7 +1,7 @@
 import sbt._
 
 object Dependencies {
-  val twitterVersion = "19.8.0"
+  val twitterVersion = "19.9.0"
   
   lazy val twitterServer = "com.twitter" %% "twitter-server" % twitterVersion
   lazy val finagleStats = "com.twitter" %% "finagle-stats" % twitterVersion
