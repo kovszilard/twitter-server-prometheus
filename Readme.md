@@ -4,14 +4,16 @@
 [![Tweet](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fkovszilard%2Fsmenu)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fkovszilard%2Fsmenu)
 [![Twitter follow](https://img.shields.io/twitter/follow/kovszilard?style=social)](https://twitter.com/intent/follow?screen_name=kovszilard)
 
-This project is a simple metrics exporter from twitter server to prometheus based on the blog post and code from [Footballradar](https://engineering.footballradar.com/prometheus-at-football-radar/)
+Metrics exporter for twitter server, exposing prometheus metrics.
+
+Based on the blog post and code from [Footballradar](https://engineering.footballradar.com/prometheus-at-football-radar/)
 
 ## Features
 
+* Integrated to the admin UI ![Screenshot](Screenshot.png)
 * Metrics are exposed on the admin port `/metrics` http endpoint.
 * The service is detached from the main thread pool of the rest of the app just like the `/admin/metrics.json`.
 * Exported histograms include `count`, `sum`, `min`, `max`, `avg` and `quantile` data just like in Finagle
-* A link is included on the Admin Ui to the exported data
 
 ## Usage
 
