@@ -11,11 +11,6 @@ script:
   - sbt ++$TRAVIS_SCALA_VERSION compile
   - ./end-to-end-test.sh
 
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
-
 cache:
   directories:
     - $HOME/.cache/coursier
