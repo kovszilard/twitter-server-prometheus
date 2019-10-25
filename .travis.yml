@@ -2,14 +2,14 @@ language: scala
 
 scala:
   - 2.11.12
-  - 2.12.8
+  - 2.12.10
 
 jdk:
   - openjdk8
 
 script:
   - sbt ++$TRAVIS_SCALA_VERSION compile
-  - ./end-to-end-test.sh
+  - ./end-to-end-test.sh $TRAVIS_SCALA_VERSION
 
 cache:
   directories:

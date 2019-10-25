@@ -5,7 +5,14 @@ APP_ENDPOIT=http://localhost:8080
 METRICS_ENDPOINT=http://localhost:9990/metrics
 SHUTDOWN_ENDPOINT=http://localhost:9990/admin/shutdown
 
-sbt "project example" "run" &
+SCALA_VERSION=$1
+# If SCALA_VERSION not provided
+if [ -z "$SCALA_VERSION" ]
+then
+  SCALA_VERSION=2.12.10
+fi
+
+sbt "project example" "++$SCALA_VERSION run" &
 
 # Block until admin is up
 STATUS_CODE=$(curl --write-out %{http_code} --silent --output /dev/null $HEALTH_ENDPOIT)
@@ -26,10 +33,10 @@ if [ "$COUNTER" != "1.0" ]
 then
     curl --silent --output /dev/null -X POST ${SHUTDOWN_ENDPOINT}
     sleep 5
-    echo "Counter should be 1.0 and not $COUNTER"
+    echo "Counter should be 1.0 and not $COUNTER (scala version: $SCALA_VERSION)"
     exit 1
 fi
 
 curl --silent --output /dev/null -X POST ${SHUTDOWN_ENDPOINT}
 sleep 5
-echo "Test passed, exiting..."
+echo "Test passed on scala $SCALA_VERSION, exiting..."
