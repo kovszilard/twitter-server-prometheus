@@ -16,7 +16,7 @@ This project is a simple metrics exporter from twitter server to prometheus base
 Include it in your project by adding the following to your build.sbt:
 
 ```scala
-libraryDependencies += "com.github.kovszilard" %% "twitter-server-prometheus" % "19.9.0"
+libraryDependencies += "com.github.kovszilard" %% "twitter-server-prometheus" % "19.10.0"
 ```
 
 Once you have the SBT dependency, you can mix in the `PrometheusExporter` trait to your App.
