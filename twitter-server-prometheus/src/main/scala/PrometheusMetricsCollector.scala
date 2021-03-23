@@ -4,10 +4,13 @@ import io.prometheus.client.Collector
 import io.prometheus.client.Collector.MetricFamilySamples.Sample
 import io.prometheus.client.Collector._
 
-import scala.collection.JavaConversions._
+import scala.jdk.CollectionConverters._
 
 
 class PrometheusMetricsCollector(registry: MetricsView = MetricsStatsReceiver.defaultRegistry) extends Collector {
+
+  implicit def listConverter[A](list: List[A]): java.util.List[A] = list.asJava
+  implicit def mapConverter[K, V](map: java.util.Map[K, V]): scala.collection.mutable.Map[K, V] = map.asScala
 
   override def collect(): java.util.List[MetricFamilySamples] = {
     val gauges = registry.gauges.map{ case (name: String, value: Number) => fromGauge(name, value)}
