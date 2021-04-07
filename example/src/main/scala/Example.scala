@@ -9,7 +9,28 @@ import com.twitter.util.{Await, Future}
 object Example extends TwitterServer with PrometheusExporter {
 
   val receiver = LoadedStatsReceiver.scope("prometheus_demo")
-  val requests = receiver.counter("http_requests")
+  override val metricsCodec: PrometheusMetricsCodec = new PrometheusMetricsCodec {
+    override def fromMetricName(metricName: String): (String, List[(String, String)]) = {
+      val name :: params = metricName.split('?').toList
+      val labels = params.map(_.split('&').flatMap(_.split("=").toList).toList).flatMap {
+        case Nil =>
+          None
+        case name :: Nil =>
+          Some(name -> "")
+        case name :: value :: _ =>
+          Some(name -> value)
+      }
+      (name, labels)
+    }
+    override def toMetricName(name: String, metadata: List[(String, String)]): String = {
+      val params: List[String] = metadata.map { case (name, value) => s"$name=$value" }
+      name + params.mkString("?", "&", "")
+    }
+  }
+
+
+  val requests = receiver.counter(metricsCodec.toMetricName("http_requests", List("id" -> "4")))
+
 
   val helloWorldService = new Service[Request, Response] {
     def apply(request: Request): Future[Response] = {
