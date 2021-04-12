@@ -22,12 +22,13 @@ case class PrometheusMetricsCollector(codec: PrometheusMetricsCodec, registry: M
   }
 
   def extractAndSanitizeMetricAndLabels(rawName: String): (String, List[(String, String)]) = {
-    Try {
+    val (name, labels) = Try {
       codec.fromMetricName(rawName)
     }.getOrElse{
       // TODO Fix potential high cardinality if dynamic non-envodable values end up as the rawName
       rawName -> List("finagleName" -> rawName)
     }
+    (sanitizeMetricName(name), labels)
   }
 
   def fromGauge(name: String, value: Number): MetricFamilySamples = {
