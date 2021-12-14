@@ -9,7 +9,7 @@ object Dependencies {
   lazy val prometheusSimpleClientCommon = "io.prometheus" % "simpleclient_common" % "0.8.0"
   
   lazy val twitterServerLogback = "com.twitter" %% "twitter-server-logback-classic" % twitterVersion
-  lazy val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
+  lazy val logback = "ch.qos.logback" % "logback-classic" % "1.2.8"
   
   lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5"
 }
