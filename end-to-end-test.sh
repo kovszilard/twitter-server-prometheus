@@ -9,7 +9,7 @@ SCALA_VERSION=$1
 # If SCALA_VERSION not provided
 if [ -z "$SCALA_VERSION" ]
 then
-  SCALA_VERSION=2.12.10
+  SCALA_VERSION=2.13.10
 fi
 
 sbt "project example" "++$SCALA_VERSION run" &
