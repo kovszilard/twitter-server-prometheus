@@ -15,9 +15,16 @@ case class PrometheusMetricsCollector(codec: PrometheusMetricsCodec, registry: M
   implicit def mapConverter[K, V](map: java.util.Map[K, V]): scala.collection.mutable.Map[K, V] = map.asScala
 
   override def collect(): java.util.List[MetricFamilySamples] = {
-    val gauges = registry.gauges.map{ case (name: String, value: Number) => fromGauge(name, value)}
-    val counters = registry.counters.map{ case (name: String, value: Number) => fromCounter(name, value)}
-    val histograms = registry.histograms.map{ case (name: String, value: Snapshot) => fromHistogram(name, value)}
+    val gauges = registry.gauges.map { gaugeSnapshot =>
+      fromGauge(gaugeSnapshot.hierarchicalName, gaugeSnapshot.value)
+    }
+    val counters = registry.counters.map { counterSnapshot =>
+      fromCounter(counterSnapshot.hierarchicalName, counterSnapshot.value)
+    }
+    val histograms = registry.histograms.map{ histogramSnapshot =>
+      fromHistogram(histogramSnapshot.hierarchicalName, histogramSnapshot.value)
+    }
+
     (gauges ++ counters ++ histograms).toList
   }
 
