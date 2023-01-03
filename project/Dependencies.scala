@@ -11,5 +11,5 @@ object Dependencies {
   lazy val twitterServerLogback = "com.twitter" %% "twitter-server-logback-classic" % twitterVersion
   lazy val logback = "ch.qos.logback" % "logback-classic" % "1.4.5"
   
-  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5"
+  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.14"
 }
