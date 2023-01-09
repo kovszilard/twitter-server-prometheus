@@ -1,6 +1,6 @@
 import Dependencies._
 
-ThisBuild / scalaVersion     := "2.12.10"
+ThisBuild / scalaVersion     := "2.13.10"
 ThisBuild / version          := twitterVersion
 ThisBuild / organization     := "com.github.kovszilard"
 ThisBuild / organizationName := "kovszilard"
@@ -18,7 +18,7 @@ lazy val root = (project in file("."))
 lazy val twitterServerPrometheus = (project in file("twitter-server-prometheus"))
     .settings(
         name := "twitter-server-prometheus",
-        crossScalaVersions := Seq("2.12.10", "2.11.12"),
+        crossScalaVersions := Seq("2.13.10", "2.12.10", "2.11.12"),
         libraryDependencies ++= Seq(
             twitterServer,
             finagleStats,
@@ -30,7 +30,7 @@ lazy val twitterServerPrometheus = (project in file("twitter-server-prometheus")
 lazy val example = (project in file("example"))
     .settings(
         name := "example",
-        crossScalaVersions := Seq("2.12.10", "2.11.12"),
+        crossScalaVersions := Seq("2.13.10", "2.12.10", "2.11.12"),
         libraryDependencies ++= Seq(
             twitterServerLogback,
             logback

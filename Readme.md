@@ -20,7 +20,7 @@ Based on the blog post and code from [Footballradar](https://engineering.footbal
 Include it in your project by adding the following to your build.sbt:
 
 ```scala
-libraryDependencies += "com.github.kovszilard" %% "twitter-server-prometheus" % "19.10.0"
+libraryDependencies += "com.github.kovszilard" %% "twitter-server-prometheus" % "20.10.0"
 ```
 
 Once you have the SBT dependency, you can mix in the `PrometheusExporter` trait to your App.
@@ -29,4 +29,14 @@ Once you have the SBT dependency, you can mix in the `PrometheusExporter` trait 
 object MyApp extends TwitterServer with PrometheusExporter {
   // ...
 }
+```
+
+## Example
+
+See Example.scala
+
+and run it with:
+
+```
+sbt example/runMain com.github.kovszilard.twitter.server.prometheus.Example
 ```
